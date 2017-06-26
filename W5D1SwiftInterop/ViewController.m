@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Repos.h"
+#import "W5D1SwiftInterop-Swift.h"
 
 @interface ViewController ()
 
@@ -48,7 +48,7 @@
                 NSURL *url = [NSURL URLWithString:eachRepo[@"html_url"]];
                 NSNumber *size = eachRepo[@"size"];
                 
-                Repos* aRepo = [[Repos alloc] initWithName:name url:url size:size];
+                Repo* aRepo = [[Repo alloc] initWithName:name url:url size:size.intValue];
                 
                 [reposArray addObject:aRepo];
                 
@@ -106,7 +106,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    Repos *repo = self.objects[indexPath.row];
+    Repo *repo = self.objects[indexPath.row];
     cell.textLabel.text = repo.name;
     return cell;
 }
